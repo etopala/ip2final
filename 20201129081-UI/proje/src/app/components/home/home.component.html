@@ -1,0 +1,51 @@
+<div class="container">
+    <mat-progress-bar mode="buffer"></mat-progress-bar>
+    <p>&nbsp;</p>
+    <h1>Öğrenciler</h1>  
+    <mat-form-field appearance="outline">
+      <input matInput placeholder="Aranacak Bir Değer Giriniz." (keyup)="filtrele($event)">
+    </mat-form-field>
+    <p>&nbsp;</p>
+    <mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="ogrNo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Öğrenci No
+        </mat-header-cell>
+        <mat-cell *matCellDef="let kayit"> {{kayit.ogrNo}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="ogrAdSoyad">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Ad Soyad
+        </mat-header-cell>
+        <mat-cell *matCellDef="let kayit"> {{kayit.ogrAdSoyad}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="ogrMail">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Mail
+        </mat-header-cell>
+        <mat-cell *matCellDef="let kayit"> {{kayit.ogrMail}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="ogrYas">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Yaş
+        </mat-header-cell>
+        <mat-cell *matCellDef="let kayit"> {{kayit.ogrYas}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="ogrDgYer">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Doğum Yeri
+        </mat-header-cell>
+        <mat-cell *matCellDef="let kayit"> {{kayit.ogrDgYer}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="islemler">
+        <mat-header-cell *matHeaderCellDef> İşlemler
+        </mat-header-cell>
+        <mat-cell *matCellDef="let kayit">
+          <button mat-icon-button matTooltip="Dersleri Listele" [routerLink]="['/derslistele',kayit.ogrId]">
+            <mat-icon aria-label="label" color="primary">work</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Ödevleri Listele" [routerLink]="['/odevlistele',kayit.ogrId]">
+            <mat-icon aria-label="label" color="accent">description</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100, 500, 1000]" showFirstLastButtons=""></mat-paginator>
+</div>

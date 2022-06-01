@@ -1,0 +1,44 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar class="mat-elevation-z8" style="background-color: #7b1fa2;color:white;">Menü</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/ders']">Ders</a>
+      <a mat-list-item [routerLink]="['/odev']">Ödev</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="mat-elevation-z8">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span routerLink="/">Ödev Dağıtım Portalı</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button mat-button  [routerLink]="['/giris']" *ngIf="!apiservice.oturumkontrol()">
+        <mat-icon aria-label="label">login</mat-icon>
+      </button>
+      <button mat-button  [routerLink]="['/']" *ngIf="apiservice.oturumkontrol()">{{kadi}}</button>
+      <button mat-button mat-icon-button (click)="oturumkapat()" *ngIf="apiservice.oturumkontrol()">
+        <mat-icon aria-label="label">output</mat-icon>
+      </button>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Admin Menü" *ngIf="apiservice.yetkikontrol(['Admin'])">
+        <mat-icon>admin_panel_settings</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="['/admin/adminogrenci']">Öğrenciler</button>
+        <button mat-menu-item [routerLink]="['/admin/adminders']">Dersler</button>
+        <button mat-menu-item [routerLink]="['/admin/adminodev']">Ödevler</button>
+      </mat-menu>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

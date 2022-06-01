@@ -1,0 +1,41 @@
+<div class="container">
+  <mat-progress-bar mode="buffer"></mat-progress-bar>
+  <p>&nbsp;</p>
+  <h1>Dersler</h1>
+  <mat-form-field appearance="outline">
+    <input matInput placeholder="Aranacak Bir Değer Giriniz." (keyup)="filtrele($event)">
+  </mat-form-field>
+  <button mat-fab matTooltip="Ders Ekle" color="accent" (click)="ekle()">
+    <mat-icon aria-label="label">work</mat-icon>
+  </button>
+  <p>&nbsp;</p>
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="dersNo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ders No
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.dersNo}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="dersAd">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ders Ad
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.dersAd}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="dersKredi">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ders Kredi
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.dersKredi}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="islemler">
+      <mat-header-cell *matHeaderCellDef> İşlemler
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit">
+        <button mat-icon-button matTooltip="Öğrencileri Listele" [routerLink]="['/ders/ogrencilistele',kayit.dersId]">
+          <mat-icon aria-label="label" color="primary">person</mat-icon>
+        </button>        
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100, 500, 1000]" showFirstLastButtons=""></mat-paginator>
+</div>

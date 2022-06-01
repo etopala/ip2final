@@ -1,0 +1,42 @@
+<div class="container">
+  <mat-progress-bar mode="buffer"></mat-progress-bar>
+  <p>&nbsp;</p>
+  <h1>Ödevler</h1>
+  <mat-form-field appearance="outline">
+    <input matInput placeholder="Aranacak Bir Değer Giriniz." (keyup)="filtrele($event)">
+  </mat-form-field>
+  <button mat-fab matTooltip="Ödev Ekle" color="accent" (click)="ekle()">
+    <mat-icon aria-label="label">description</mat-icon>
+  </button>
+  <p>&nbsp;</p>
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="odevNo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ödev No
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.odevNo}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="odevAd">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ödev Ad
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.odevAd}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="islemler">
+      <mat-header-cell *matHeaderCellDef> İşlemler
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit">
+        <button mat-icon-button matTooltip="Öğrencileri Listele" [routerLink]="['/odev/odevogrencilistele',kayit.odevId]">
+          <mat-icon aria-label="label" color="primary">person</mat-icon>
+        </button>        
+        <button mat-icon-button matTooltip="Ödev Düzenle" (click)="duzenle(kayit)">
+          <mat-icon aria-label="label" color="accent">edit</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Ödev Sil" (click)="sil(kayit)">
+          <mat-icon aria-label="label" color="warn">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100, 500, 1000]" showFirstLastButtons=""></mat-paginator>
+</div>

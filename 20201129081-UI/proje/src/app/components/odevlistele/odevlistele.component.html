@@ -1,0 +1,49 @@
+<div class="container">
+  <mat-progress-bar mode="buffer"></mat-progress-bar>
+  <p>&nbsp;</p>
+  <h1>Ödev Listesi</h1>
+  <h3><b>Öğrenci No:</b>{{secOgrenci?.ogrNo}}</h3>
+  <h3><b>Ad Soyad:</b>{{secOgrenci?.ogrAdSoyad}}</h3>
+  <h3><b>Mail:</b>{{secOgrenci?.ogrMail}}</h3>
+  <h3><b>Yaş:</b>{{secOgrenci?.ogrYas}}</h3>
+  <h3><b>Doğum Yeri:</b>{{secOgrenci?.ogrDgYer}}</h3>
+  <button mat-fab color="primary" matTooltip="Öğrenci Listesi" [routerLink]="['/']">
+    <mat-icon aria-label="label">arrow_back</mat-icon>
+  </button>
+  <p>&nbsp;</p>
+  <mat-form-field appearance="outline" style="width: 50%;">
+    <mat-label>Ödev Seçiniz</mat-label>
+    <mat-select placeholder="Ödev Seçiniz" (selectionChange)="odevsec($event.value)">
+      <mat-option [value]="'odev.odevId'" *ngFor="let odev of odevler">{{odev.odevAd}}</mat-option>
+    </mat-select>
+  </mat-form-field>&nbsp;&nbsp;
+  <button mat-fab color="accent" matTooltip="Ödev Ekle" (click)="kaydet()">
+    <mat-icon aria-label="label">add</mat-icon>
+  </button>
+  <h3 style="color: red;" *ngIf="kayitlar?.length==0">Henüz Ödev Eklenmedi!</h3>
+  <mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="odevNo">
+      <mat-header-cell *matHeaderCellDef> Ödev No
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.odevBilgi.odevNo}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="odevAd">
+      <mat-header-cell *matHeaderCellDef> Ödev Adı
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.odevBilgi.odevAd}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="islemler">
+      <mat-header-cell *matHeaderCellDef> İşlemler
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> 
+        <button mat-icon-button color="warn" matTooltip="Ödevi Öğrenciden Sil" (click)="sil(kayit)">
+          <mat-icon aria-label="label" color="warn">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100, 500, 1000]" showFirstLastButtons=""></mat-paginator>
+</div>

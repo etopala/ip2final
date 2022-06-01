@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbModelStoreContainer" CdmEntityContainer="dbEntities">
+    <EntitySetMapping Name="Ders">
+      <EntityTypeMapping TypeName="dbModel.Ders">
+        <MappingFragment StoreEntitySet="Ders">
+          <ScalarProperty Name="dersId" ColumnName="dersId" />
+          <ScalarProperty Name="dersNo" ColumnName="dersNo" />
+          <ScalarProperty Name="dersAd" ColumnName="dersAd" />
+          <ScalarProperty Name="dersKredi" ColumnName="dersKredi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kayit">
+      <EntityTypeMapping TypeName="dbModel.Kayit">
+        <MappingFragment StoreEntitySet="Kayit">
+          <ScalarProperty Name="kayitId" ColumnName="kayitId" />
+          <ScalarProperty Name="kayitOgrId" ColumnName="kayitOgrId" />
+          <ScalarProperty Name="kayitDersId" ColumnName="kayitDersId" />
+          <ScalarProperty Name="kayitOdevId" ColumnName="kayitOdevId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Odev">
+      <EntityTypeMapping TypeName="dbModel.Odev">
+        <MappingFragment StoreEntitySet="Odev">
+          <ScalarProperty Name="odevId" ColumnName="odevId" />
+          <ScalarProperty Name="odevNo" ColumnName="odevNo" />
+          <ScalarProperty Name="odevAd" ColumnName="odevAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ogrenci">
+      <EntityTypeMapping TypeName="dbModel.Ogrenci">
+        <MappingFragment StoreEntitySet="Ogrenci">
+          <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+          <ScalarProperty Name="ogrSifre" ColumnName="ogrSifre" />
+          <ScalarProperty Name="uyeadmin" ColumnName="uyeadmin" />
+          <ScalarProperty Name="ogrId" ColumnName="ogrId" />
+          <ScalarProperty Name="ogrNo" ColumnName="ogrNo" />
+          <ScalarProperty Name="ogrAdSoyad" ColumnName="ogrAdSoyad" />
+          <ScalarProperty Name="ogrMail" ColumnName="ogrMail" />
+          <ScalarProperty Name="ogrYas" ColumnName="ogrYas" />
+          <ScalarProperty Name="ogrDgYer" ColumnName="ogrDgYer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

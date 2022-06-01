@@ -1,0 +1,15 @@
+<div class="container">
+  <mat-progress-bar mode="buffer"></mat-progress-bar>
+  <p>&nbsp;</p>
+  <h2>Oturum Aç</h2>
+  <mat-form-field appearance="outline" style="width: 50%;">
+    <mat-label>Kullanıcı Ad</mat-label>
+    <input matInput placeholder="Kullanıcı Ad" type="text" #kadi>
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="width: 50%;">
+    <mat-label>Şifre</mat-label>
+    <input matInput placeholder="Şifre" type="password" #parola>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="oturumac(kadi.value,parola.value)">Oturum Aç</button>&nbsp;
+  <button mat-raised-button color="accent" (click)="ekle()" *ngIf="['/giris']">Öğrenci Ekle</button>
+</div>

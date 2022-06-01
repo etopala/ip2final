@@ -1,0 +1,41 @@
+<mat-toolbar color="primary" class="mat-elevation-z8">
+  <span>{{dialogBaslik}}</span>
+</mat-toolbar>
+<div class="container">
+  <form [formGroup]="frm">
+    <mat-form-field appearance="outline">
+      <mat-label>Öğrenci No</mat-label>
+      <input matInput placeholder="Öğrenci No" formControlName="ogrNo" name="ogrNo" required type="text">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Ad Soyad</mat-label>
+      <input matInput placeholder="Ad Soyad" formControlName="ogrAdSoyad" name="ogrAdSoyad" required type="text">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Mail</mat-label>
+      <input matInput placeholder="Mail" formControlName="ogrMail" name="ogrMail" required type="text">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Kullanıcı Ad</mat-label>
+      <input matInput placeholder="Kullanıcı Ad" formControlName="KullaniciAdi" name="KullaniciAdi" required type="text">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Şifre</mat-label>
+      <input matInput placeholder="Şifre" formControlName="ogrSifre" name="ogrSifre" required type="text">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Yaş</mat-label>
+      <input matInput placeholder="Yaş" formControlName="ogrYas" name="ogrYas" required type="number">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Doğum Yeri</mat-label>
+      <input matInput placeholder="Doğum Yeri" formControlName="ogrDgYer" name="ogrDgYer" required type="text">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Üye-Admin</mat-label>
+      <input matInput placeholder="Üye-Admin" formControlName="uyeadmin" name="uyeadmin" required type="text">
+    </mat-form-field>
+  </form>
+  <button mat-raised-button color="primary" (click)="dialogRef.close(frm.value)" [disabled]="frm.invalid">Kaydet</button>&nbsp;
+  <button mat-raised-button color="warn" (click)="dialogRef.close()">İptal</button>
+</div>
